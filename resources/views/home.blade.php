@@ -2,7 +2,8 @@
 @push('css')
     <style>
         .content-wrapper {
-            background-image: linear-gradient(to right top, #343a40, #283033, #202626, #181c1a, #10110f) !important;
+            background: #454d55;
+            /*background-image: linear-gradient(to right top, #343a40, #283033, #202626, #181c1a, #10110f) !important;*/
             color: whitesmoke !important;
         }
         .height{
@@ -40,11 +41,15 @@
             box-shadow: none;
             border:none;
         }
+        .info-box{
+            background: #343a40;
+        }
     </style>
 @endpush
 @section('content')
 <div class="container">
     <livewire:search />
+    <livewire:application />
 </div>
 @endsection
 @push('js')
