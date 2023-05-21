@@ -45,14 +45,26 @@
             background: #343a40;
         }
     </style>
+    @can('isMember')
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    @endcan
 @endpush
 @section('content')
 <div class="container">
-    <livewire:search />
-    <livewire:application />
+    @can('isMember')
+        <livewire:search />
+        <livewire:application />
+    @endcan
 </div>
 @endsection
 @push('js')
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
+    <script>
+        $( function() {
+            $( ".ui-sortable" ).sortable();
+        } );
+    </script>
     <script>
         $('#search').on('keyup', function(e) {
             if (e.keyCode === 13) {

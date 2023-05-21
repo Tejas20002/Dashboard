@@ -8,6 +8,7 @@ class Application extends Component
 {
     public function render()
     {
-        return view('livewire.application');
+        $apps =\App\Models\Application::all();
+        return view('livewire.application', compact('apps'));
     }
 }

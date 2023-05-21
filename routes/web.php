@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::view('wel','welcome');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/google/callback', [AuthController::class, 'loginWithGoogle'])->name('login-with-google');
 Route::get('google/login', [AuthController::class, 'redirectToGoogle'])->name('login-with-google-redirect');

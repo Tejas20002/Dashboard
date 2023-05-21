@@ -72,7 +72,11 @@
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
-
+    <!-- Alpine Plugins -->
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+    <!-- Alpine Core -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="{{ asset('vendor/wire-elements/modal/css/modal.css') }}" rel="stylesheet">
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>
@@ -96,8 +100,10 @@
     {{-- Livewire Script --}}
     @if(config('adminlte.livewire'))
         @if(app()->version() >= 7)
+            @livewire('livewire-ui-modal')
             @livewireScripts
         @else
+            <livewire:livewire-ui-modal />
             <livewire:scripts />
         @endif
     @endif
