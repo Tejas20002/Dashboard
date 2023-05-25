@@ -68,6 +68,17 @@
     @endcan
 </div>
 @endsection
+@section('plugins.Sweetalert2', true)
+
+@section('js')
+    <script>
+        @if (session()->has('success'))
+        swal.fire("Done!", "{{ session()->get('success') }}", "success");
+        @elseif(session()->has('error'))
+        swal.fire("Error!", "{{ session()->get('error') }}", "error");
+        @endif
+    </script>
+@endsection
 @push('js')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
@@ -100,12 +111,22 @@
             const cC = document.querySelector('#copy-close');
             user.addEventListener('click', () => {
                 const value = document.querySelector('#user-val').textContent;
-                navigator.clipboard.writeText(value);
+                var temp = $("<textarea>");
+                $("body").append(temp);
+                temp.val(value.replace(/^\s*/gm, '')).select();
+                document.execCommand("copy");
+                temp.remove();
+                // navigator.clipboard.writeText(value);
                 document.querySelector('#toast-undo').classList.remove('hidden')
             });
             pass.addEventListener('click', () => {
                 const value = document.querySelector('#pass-val').textContent;
-                navigator.clipboard.writeText(value);
+                var temp = $("<textarea>");
+                $("body").append(temp);
+                temp.val(value.replace(/^\s*/gm, '')).select();
+                document.execCommand("copy");
+                temp.remove();
+                // navigator.clipboard.writeText(value);
                 document.querySelector('#toast-undo').classList.remove('hidden')
             });
             cC.addEventListener('click', () => {

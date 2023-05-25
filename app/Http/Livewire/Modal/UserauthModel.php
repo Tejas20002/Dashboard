@@ -23,6 +23,13 @@ class UserauthModel extends \LivewireUI\Modal\ModalComponent
     }
 
     public function changePassword(){
+        $id = $this->app->id;
+        $application = Application::find($id);
+        $status = $application->update(['app_user'=>$this->username, 'app_password'=>$this->password]);
+        if ($status){
+            session()->flash('success', 'Successfully Updated.');
+            
+        }
 
     }
 }
