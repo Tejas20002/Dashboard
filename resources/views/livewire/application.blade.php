@@ -3,8 +3,9 @@
         @foreach($apps as $app)
             <div class="col-12 col-sm-6 col-md-3 ui-sortable-handle">
                 <div class="info-box">
+                    <div class="svg" id="animation{{$app->id}}"></div>
                     <div class="cursor-pointer absolute top-0 right-0 p-1">
-                        <a wire:click="$emit('openModal', 'modal.userauth-model', {{ json_encode([$apps]) }})"><i class="fas fa-edit"></i></a>
+                        <a wire:click="$emit('openModal', 'modal.userauth-model', {{ json_encode([$app]) }})"><i class="fas fa-edit"></i></a>
                     </div>
                     <span class="info-box-icon bg-info elevation-1" style="width: 70px; height: 68px"><img src="{{ $app->icon }}" alt=""></span>
                     <div class="info-box-content">

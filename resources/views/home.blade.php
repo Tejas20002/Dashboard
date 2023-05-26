@@ -44,6 +44,14 @@
         .info-box{
             background: #343a40;
         }
+        .svg{
+            width: 200px;
+            height: 150px;
+            position: absolute;
+            /*top: -10px;*/
+            /*left: -20px;*/
+            pointer-events: none;
+        }
     </style>
     @can('isMember')
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
@@ -72,6 +80,7 @@
 
 @push('js')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.5.3/lottie_svg.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
     <script>
         $( function() {
@@ -130,6 +139,19 @@
             cC.addEventListener('click', () => {
                 document.querySelector('#toast-undo').classList.add('hidden')
             })
+        })
+
+        // lottie animation
+        Livewire.on('animation', Id => {
+            const svgContainer = document.querySelector('#animation'+Id)
+            const anime = bodymovin.loadAnimation({
+                wrapper: svgContainer,
+                animType: 'svg',
+                loop: false,
+                autoplay: false,
+                path: "https://assets6.lottiefiles.com/packages/lf20_tiviyc3p.json",
+            })
+            anime.goToAndPlay(0, true);
         })
     </script>
 @endpush

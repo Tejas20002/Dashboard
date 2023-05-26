@@ -25,6 +25,7 @@ class UserauthModel extends ModalComponent
         $id = $this->app->id;
         $application = Application::find($id);
         $application->update(['app_user'=>$this->username, 'app_password'=>$this->password]);
+        $this->emit('animation', $id);
         session()->flash('success', 'Successfully Updated.');
         $this->closeModal();
     }
