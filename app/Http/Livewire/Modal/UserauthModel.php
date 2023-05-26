@@ -3,10 +3,9 @@
 namespace App\Http\Livewire\Modal;
 
 use App\Models\Application;
-use Livewire\Component;
-use LivewireUI\Modal\Contracts\ModalComponent;
+use LivewireUI\Modal\ModalComponent;
 
-class UserauthModel extends \LivewireUI\Modal\ModalComponent
+class UserauthModel extends ModalComponent
 {
     public $app;
     public $username;
@@ -25,11 +24,8 @@ class UserauthModel extends \LivewireUI\Modal\ModalComponent
     public function changePassword(){
         $id = $this->app->id;
         $application = Application::find($id);
-        $status = $application->update(['app_user'=>$this->username, 'app_password'=>$this->password]);
-        if ($status){
-            session()->flash('success', 'Successfully Updated.');
-            
-        }
-
+        $application->update(['app_user'=>$this->username, 'app_password'=>$this->password]);
+        session()->flash('success', 'Successfully Updated.');
+        $this->closeModal();
     }
 }

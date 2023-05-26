@@ -70,15 +70,6 @@
 @endsection
 @section('plugins.Sweetalert2', true)
 
-@section('js')
-    <script>
-        @if (session()->has('success'))
-        swal.fire("Done!", "{{ session()->get('success') }}", "success");
-        @elseif(session()->has('error'))
-        swal.fire("Error!", "{{ session()->get('error') }}", "error");
-        @endif
-    </script>
-@endsection
 @push('js')
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
@@ -86,6 +77,13 @@
         $( function() {
             $( ".ui-sortable" ).sortable();
         } );
+    </script>
+    <script>
+        @if (session()->has('success'))
+            swal.fire("Done!", "{{ session()->get('success') }}", "success");
+        @elseif(session()->has('error'))
+            swal.fire("Error!", "{{ session()->get('error') }}", "error");
+        @endif
     </script>
     <script>
         $('#search').on('keyup', function(e) {

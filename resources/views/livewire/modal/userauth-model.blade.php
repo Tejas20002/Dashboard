@@ -40,7 +40,7 @@
 </div>
 <script>
 $(document).ready(function(){
-$('#showPass').on('click', function(){
+    $('#showPass').on('click', function(){
         var passInput=$("#passwordInput");
         if(passInput.attr('type')==='password')
         {

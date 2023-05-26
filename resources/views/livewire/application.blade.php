@@ -17,7 +17,6 @@
                             <li class="cursor-pointer text-gray-700 block px-4 py-2 text-sm" id="user">Username: <span id="user-val">{{ $app->app_user }}</span></li>
                             <li class="cursor-pointer text-gray-700 block px-4 py-2 text-sm" id="pass">Password: ***********<span class="hidden" id="pass-val">{{ $app->app_password }}</span></li>
                         </ul>
-                        </span>
                     </div>
                 </div>
             </div>
